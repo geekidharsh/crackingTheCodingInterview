@@ -1,23 +1,55 @@
-# Check Permutation: 
-# 	Given two strings, write an algorithm to determine if one is Permutation of another. 
-# 	determine O() and find best speed. 
+'''
+Check Permutation: 
+	Given two strings, write an algorithm to determine if one is Permutation of another. 
+	determine O() and find best speed. 
+Permutation: one of several possible variations, in which a set or number of things can be ordered or arranged.
+P.S: string comparison is O(n), linear char by char. so the longer the char, the longer is the time
+'''
 
-# Permutation: one of several possible variations, in which a set or number of things can be ordered or arranged.
-
+# sample input 
+a = 'sRF7w0qbGp4fdgEyNlscUFyouETaPHAiQ2WIxzohiafEGJLw03N8ALvqMw6reLN1kHRjDeDausQBEuIWkIBfqUtsaZcPGoqAIkLlugTxjxLhkRvq5d6i55l4oBH1QoaMXHIZC5nA0K5KPBD9uIwa789sP0ZKV4X6'
+b = 'Vq3EeiLGfsAOH2PW6skMN8mEmUAtUKRDIY1kow9t1vIEhe81318wSMICGwf7Rv2qrLrpbeh8bh4hlRLZXDSMyZJYWfejLND4u9EhnNI51DXcQKrceKl9arWqOl7sWIw3EBkeu7Fw4TmyfYwPqCf6oUR0UIdsAVNw'
+# solution 1: using sorting and join.
 def checkPermutation(a,b):
 	# input: strings a and b
 	# return: boolean true if a is Permutation of b
 
-	if len(a) != len(b):
+	if len(a) != len(b): # O(1)
 		return False
 	else:
-		s_a = ''.join(sorted(a))
-		s_b = ''.join(sorted(b))
-		if s_a == s_b:
+		s_a = ''.join(sorted(a)) # n + n
+		s_b = ''.join(sorted(b)) # n + n
+		if s_a == s_b: 
 			return True
 		else:
 			return False
 
-a = 'sRF7w0qbGp4fdgEyNlscUFyouETaPHAiQ2WIxzohiafEGJLw03N8ALvqMw6reLN1kHRjDeDausQBEuIWkIBfqUtsaZcPGoqAIkLlugTxjxLhkRvq5d6i55l4oBH1QoaMXHIZC5nA0K5KPBD9uIwa789sP0ZKV4X6'
-b = 'Vq3EeiLGfsAOH2PW6skMN8mEmUAtUKRDIY1kow9t1vIEhe81318wSMICGwf7Rv2qrLrpbeh8bh4hlRLZXDSMyZJYWfejLND4u9EhnNI51DXcQKrceKl9arWqOl7sWIw3EBkeu7Fw4TmyfYwPqCf6oUR0UIdsAVNwbyyiajtQHKh2EKLM1KlY6NdvQTTA7JKn6bLInhFvwZ4yKKbzkgGhF3Oogtnmzl29fW6Q2p0GPuFoueZ74aqlveGTYc0zcXUJkMzltzohoRdMUKP4r5XhbsGBED8ReDbL3ouPhsFchERvvNuaIWLUCY4gl8OW06SMuvceZrCg7EkSFxxprYurHz7VQ2muxzQHj7RG2k3khxbz2ZAhWIlBBtPtg4oXIQ7cbcwgmBXaTXSBgBe3Y8ywYBjinjEjRJjVAiZkWoPrt8JtZv249XiN0MTVYj0ZW6zmcvjZtRn32U3KLMOdjLnRFUP2I3HJtp99uVlM9ghIpae0EfC0v2g78LkZE1YAKsuqCiiy7DVOhyAZUbOrRwXOEDHxUyXwCmo1zfVkPVhwysx8HhH7Iy0yHAMr0Tb97BqcpmmyBsrSgsV1aT3sjY0ctDLibrxbRXBAOexncqB4BBKWJoWkQwUZkFfPXemZkWYmE72w5CFlI6kuwBQp27dCDZ39kRG7Txs1MbsUnRnNHBy1hSOZvTQRYZPX0VmU8SVGUqzwm1ECBHZakQK4RUquk3txKCqbDfbrNmnsEcjFaiMFWkY3Esg6p3Mm41KWysTpzN6287iXjgGSBw6CBv0hH635WiZ0u47IpUD5mY9rkraDDl5sDgd3f586EWJdKAaou3jR7eYU7YuJT3RQVRI0MuS0ec0xYID3WTUI0ckImz2ck7lrtfnkewzRMZSE2ANBkEmg2XAmwrCv0gy4ExW5DayGRXoqUv06ZLGCcBEiaF0fRMlinhElZTVrGPqqhT03WSq4P97JbXA90zUxiHCnsPjuRTthYl7ZaiVZwNt3RtYT4Ff1VQ5KXRwRzdzkRMsubBX7YEhhtl0ZGVlYiP4N4t00Jr7fB4687eabUqK6jcUVpXEpTvKDbj0JLcLYsneM9fsievUz193f6aMQ5o5fm4Ilx3TUZiX4AUsoyd8CD2SK3NkiLuR255BDIA0Zbgnj2XLyQPiJ1T4fjStpjxKOTzsQsZxpThY9Fvjvoxcs3HAiXjLtZ0TSOX6n4ZLjV3TdJMc4PonwqIb3lAndlTMnuzEPof2dXnpexoVm5c37XQ7fBkoMBJ4ydnW25XKYJbkrueRDSwtJGHjY37dob4jPg0axM5uWbqGocXQ4DyiVm5GhvuYX32RQaOtXXXw8cWK6JcSUnlP1gGLMNZEGeDXOuGWiy4AJ7SH93ZQ4iPgoxdfCuW0qbsLKT2HopcY9dtBIRzr91wnES9lDL49tpuW77LSt5dGA0YLSeWAaZt9bDrduE0gDZQ2yX4SDvAOn4PMcbFRfTqzdZXONmO7ruBHHb1tVFlBFNc4xkoetDO2s7mpiVG6YR4EYMFIG1hBPh7Evhttb34AQzqImSQm1gyL3O7n3p98Kqb9qqIPbN1kuhtW5mIbIioWW2n7MHY7E5mt0'
-print(checkPermutation(a, b))
+
+# solution 2: using hashing. Optimal solution
+def is_permutation(a,b):
+	if len(a) != len(b):
+		return False
+	
+	count_a = {}
+	count_b = {}
+	for char in a:
+		if char in count_a.keys():  # o(n) since looping through every char in string 
+			count_a[char] += 1
+		else: 
+			count_a[char] = 1
+
+	for char in b: # o(n) since looping through every char in string 
+		if char in count_b.keys():
+			count_b[char] += 1
+		else:
+			count_b[char] = 1
+
+	for char in count_a:  # o(n) since looping through every char in string 
+		if char not in count_b.keys():
+			return False
+		elif count_a[char] != count_b[char]:
+			return False
+	return True
+		# total n + n + n = 3n or O(n)
+
+is_permutation(a,b)
